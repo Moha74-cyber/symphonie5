@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{titre}}
+
+{% endblock %}
+
+{% block content %}
+<h1>{{titre | capitalize}}</h1>
+<p>{{titre}}</p>
+
+    <ul>
+    {% for elem in list %}
+        <li>{{elem}}</li>
+    {% endfor %}
+
+    </ul>
+
+
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="" />
+{% endblock %}
+
+{% block js %}
+    <script src=""></script>
+{% endblock %}
+
+
+
+
