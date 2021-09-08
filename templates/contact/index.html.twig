@@ -4,15 +4,18 @@
 
 {% block content %}
 
+<div class="container">
+
 <h1>Liste des contacts</h1>
 <p>
-    <a href="{{path('contact_add')}}" class="btn btn success">
+    <a href="{{path('contact_add')}}" class="btn btn-success">
     Créer un contact
     </a>
-
-<table class="table">
+<div class= "container">
+<table class="table table-striped">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Prénom</th>
             <th>Nom</th>
             <th>Pass sanitaire</th>
@@ -44,6 +47,8 @@
 
     </tbody>
 </table>
+
+</div>
 
 
 
