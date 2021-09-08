@@ -8,6 +8,14 @@
 {% block content %}
 <h1>{{titre | capitalize}}</h1>
 <p>{{titre}}</p>
+<div class="card" style="width: 18rem;">
+  <img src="/public/image/" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 
     <ul>
     {% for elem in list %}
@@ -24,7 +32,7 @@
 {% endblock %}
 
 {% block js %}
-    <script src=""></script>
+    <script src="{{ asset('js/accueil.js')}}"></script>
 {% endblock %}
 
 

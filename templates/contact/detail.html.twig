@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contact{% endblock %}
+
+{% block content %}
+
+<h1>Contact</h1>
+
+
+        <ul>
+            <li>#{{contact.id}}</li>
+            <li>Nom:{{contact.name}}</li>
+            <li>Prénom:{{contact.firstname}}</li>
+            <li>Pass sanitaire
+            {% if contact.sanitaryPass %}
+                oui
+            {% else %}
+                non
+            {% endif %}
+            </li>
+         
+            <a class="btn btn-sm btn-warning" href="{{path('contact_list')}}">back</a>
+
+            <a class="btn btn-sm btn-warning btn-contact-delete" href="{{path('contact_delete',{id: contact.id})}}">delete</a>
+
+        </ul>
+ 
+
+
+
+
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function(){
+            $('.btn-contact-delete').click(function(e){
+                e.preventDefault();
+                if (confirm('supprimer ce contact ?')){
+                    document.location.href = $(this).attr('href');
+                }
+            })
+        })
+    </script>
+
+{% endblock %}

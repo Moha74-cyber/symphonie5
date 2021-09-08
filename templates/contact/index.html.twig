@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contact{% endblock %}
+
+{% block content %}
+
+<h1>Liste des contacts</h1>
+<p>
+    <a href="{{path('contact_add')}}" class="btn btn success">
+    Créer un contact
+    </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Pass sanitaire</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for contact in contacts %}
+        <tr>
+            <td>#{{contact.id}}</td>
+            <td>{{contact.name}}</td>
+            <td>{{contact.firstname}}</td>
+            <td>
+            {% if contact.sanitaryPass %}
+                oui
+            {% else %}
+                non
+            {% endif %}
+            </td>
+            <td>
+            <a class="btn btn-sm btn-info" href="{{path('contact_detail',{id: contact.id})}}">details</a>
+            </td>
+        </tr>
+            {% endfor %}
+
+    </tbody>
+</table>
+
+
+
+
+</div>
+{% endblock %}
