@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -78,7 +79,24 @@ class ContactController extends AbstractController
 
         return $this->redirectToRoute('contact_list');
 
- 
+     }       
+        #[Route('/contact/update/{id}', name: 'contact_update')]
+    public function update(Contact $contact, EntityManagerInterface $em,Request $request): Response
+    {
+                $form = $this->createForm(ContactType::class,$contact);
+                $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()){
+                    $em->flush();
 
-}
+                    return $this->redirectToRoute('contact_list');
+                }
+
+                return $this->render('contact/update.html.twig', [
+                     'contact' => $contact,
+                     'form'=> $form->createView(),
+                ]);
+               
+
+
+    }
 }

@@ -106,4 +106,11 @@ class Contact
 
         return $this;
     }
+
+    
+    public function getFulName(): string
+    {
+
+        return $this->getFirstname().' '.$this->getName();
+    }
 }
