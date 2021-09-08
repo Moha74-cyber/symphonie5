@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{%set contactName = contact.firstname ~ ' ' ~ contact.name%}
+{% block title %}Modification de {{contactName}}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Modification de {{contactName}}</h1>
+
+    {{form_start(form)}}
+    {{form_end(form)}}
+  
+
+{% endblock %}
+
