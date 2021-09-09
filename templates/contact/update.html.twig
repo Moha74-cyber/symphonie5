@@ -8,7 +8,51 @@
 
     <h1>Modification de {{contactName}}</h1>
 
+  {# {{form(form)}} #}
+   
     {{form_start(form)}}
+ <div class="row">
+    <div class="col-6">
+
+        {{form_label(form.name)}}{#le nom du champs#}
+        {{form_widget(form.name)}}{#correspond au input#}
+        {{form_errors(form.name)}}{#affiche les éventuels s#}
+
+    </div>
+      <div class="col-6">
+
+        {{form_row(form.firstname,{label:'prénom',id:'idprénom',attr: {class:'classprenom'}})}}
+       
+
+     </div>
+      <div class="col-6">
+
+        {{form_row(form.email)}}{#le nom du champs#}
+      
+
+    </div>
+      <div class="col-6">
+
+        {{form_label(form.password)}}{#le nom du champs#}
+        
+
+    </div>
+    </div>
+      <div class="col-6">
+
+        {{form_label(form.sanitaryPass)}}{#le nom du champs#}
+        
+
+    </div>
+
+    
+
+
+
+
+
+
+   
     {{form_end(form)}}
   
 

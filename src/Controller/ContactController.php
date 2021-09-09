@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use Symfony\component\Form\AbstractType;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -86,6 +87,7 @@ class ContactController extends AbstractController
                 $form = $this->createForm(ContactType::class,$contact);
                 $form->handleRequest($request);
                 if ($form->isSubmitted() && $form->isValid()){
+                    //sauvegarder les modif faites dans $contact en bdd
                     $em->flush();
 
                     return $this->redirectToRoute('contact_list');

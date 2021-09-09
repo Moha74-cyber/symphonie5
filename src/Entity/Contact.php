@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * 
  */
 class Contact
 {
@@ -18,12 +20,13 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255 , nullable=true)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255 )
      */
     private $firstname;
 
@@ -34,12 +37,19 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     
+     * @Assert\Email(
+     * message = "The email '{{ value }}' is not a valid email."
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=64)
+     
+     * 
      */
+     
     private $password;
 
     public function getId(): ?int
@@ -52,7 +62,7 @@ class Contact
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self// ? veut dire null ou chaine de caractere
     {
         $this->name = $name;
 
