@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Acteur;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\AbstractType;
@@ -17,6 +19,10 @@ class ActeurType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('datenaissance', DateType::class, [ 'widget'=> 'single_text'])
+            ->add('file',FileType::class,[
+                'mapped'=> false,
+                'label'=> 'Affiche',
+            ])
             ->add('submit', SubmitType::class, ['label' => 'Enregistrer'])
         ;
     }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Interfaces\FilableInterface;
+
 use App\Repository\ActeurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,8 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ActeurRepository::class)
  */
-class Acteur
+class Acteur  implements FilableInterface
 {
+    public const FILE_DIR = '/upload/acteur';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -38,6 +41,11 @@ class Acteur
      * @ORM\ManyToMany(targetEntity=Film::class, mappedBy="acteurs")
      */
     private $films;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     public function __construct()
     {
@@ -112,9 +120,31 @@ class Acteur
         return $this;
     }
 
-    
-    public function __toString()
+
+
+    public function getImage(): ?string
     {
-        return $this->getPrenom(). ' '.$this->getNom();
+        return $this->image;
     }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+     public function getFileDirectory(): string
+    {
+        return self::FILE_DIR;
+    }
+
+       public function getFullName(): string
+    {
+        return $this->getPrenom().''.$this->getNom();
+    }
+       public function __toString(): string
+    {
+        return $this->getFullName();
+    }
+
 }

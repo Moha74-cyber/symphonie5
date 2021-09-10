@@ -15,6 +15,9 @@
             <td>{{entity.nom}}</td>
             <td>{{entity.prenom}}</td>
             <td>{{entity.datenaissance|date('d-m-Y')}}</td>
+             <td>
+                <img src="{{ entity.image}}" alt="{{ entity.nom}}" class="img-fluid" style="height: 50px"/>
+            </td>
         </tr>
             
         {% endfor %}
