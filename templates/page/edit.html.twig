@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Page{% endblock %}
+
+{% block content %}
+    <h1>Create Page</h1>
+
+    {{ include('page/_form.html.twig', {'button_label': 'Update'}) class="btn btn-success"}}
+
+    <a href="{{ path('page_index') }}" >back to list</a>
+
+    {{ include('page/_delete_form.html.twig') }}
+{% endblock %}

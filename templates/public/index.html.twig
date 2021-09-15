@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PublicController!{% endblock %}
+
+{% block content %}
+
+{% if not is_granted('ROLE_ADMIN') %}
+<a href="{{path('make_admin')}}" class="btn btn-success">
+
+ <p> je veux etre ton admin</a></p>
+
+ {% else %}
+     <p>Bienvenue dans Admin!</p>
+{% endif %}
+
+{% endblock %}
